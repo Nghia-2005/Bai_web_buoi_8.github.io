@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 2a. Đăng Nhập</title>
+    <link rel="stylesheet" href="2a_dangnhap.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>THÔNG TIN ĐĂNG NHẬP</h2>
+      <table>
+        <tr>
+          <td>Username</td>
+          <td><input type="text" id="loginUser" /></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td><input type="password" id="loginPass" /></td>
+        </tr>
+      </table>
+      <button onclick="login()">Đăng Nhập</button>
+    </div>
+
+    <script>
+      function login() {
+        let loginUser = document.getElementById("loginUser").value;
+        let loginPass = document.getElementById("loginPass").value;
+
+        let savedUser = localStorage.getItem("username");
+        let savedPass = localStorage.getItem("password");
+
+        if (loginUser === "" || loginPass === "") {
+          alert("Vui lòng nhập đầy đủ thông tin!");
+          return;
+        }
+
+        if (loginUser === savedUser && loginPass === savedPass) {
+          alert("Đăng nhập thành công!");
+        } else {
+          alert("Sai tên đăng nhập hoặc mật khẩu!");
+        }
+      }
+    </script>
+  </body>
+</html>

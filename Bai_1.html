@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 1 _ Tuần 6</title>
+    <link rel="stylesheet" href="Bai_1.css" />
+  </head>
+  <body>
+    <h2>DANH SÁCH SINH VIÊN</h2>
+    <table>
+      <tr>
+        <th>MSSV</th>
+        <th>Tên</th>
+        <th>Lớp</th>
+      </tr>
+      <tr>
+        <td id="mssv"></td>
+        <td id="hoTen"></td>
+        <td id="lop"></td>
+      </tr>
+    </table>
+
+    <script>
+      function nhapThongTin() {
+        let mssv, hoTen, lop;
+
+        // Yêu cầu nhập đúng MSSV
+        do {
+          mssv = prompt("Nhập mã số SV:");
+          if (mssv === null) return; // Nếu nhấn Cancel, thoát luôn
+          if (!mssv) alert("Bạn chưa nhập mã số SV! Vui lòng nhập lại.");
+        } while (!mssv);
+
+        // Yêu cầu nhập đúng Họ tên
+        do {
+          hoTen = prompt("Nhập họ tên:");
+          if (hoTen === null) return; // Nếu nhấn Cancel, thoát luôn
+          if (!hoTen) alert("Bạn chưa nhập họ tên! Vui lòng nhập lại.");
+        } while (!hoTen);
+
+        // Yêu cầu nhập đúng Lớp
+        do {
+          lop = prompt("Nhập lớp:");
+          if (lop === null) return; // Nếu nhấn Cancel, thoát luôn
+          if (!lop) alert("Bạn chưa nhập lớp! Vui lòng nhập lại.");
+        } while (!lop);
+
+        // Hiển thị thông tin ra bảng
+        document.getElementById("mssv").innerText = mssv;
+        document.getElementById("hoTen").innerText = hoTen;
+        document.getElementById("lop").innerText = lop;
+      }
+
+      // Gọi hàm khi tải trang
+      window.onload = nhapThongTin;
+    </script>
+  </body>
+</html>

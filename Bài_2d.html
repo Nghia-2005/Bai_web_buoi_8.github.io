@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 2d. Form Định Dạng</title>
+    <link rel="stylesheet" href="2d.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h3>FORM ĐỊNH DẠNG</h3>
+
+      <label>Họ và tên:</label>
+      <input type="text" id="name" /> <br /><br />
+
+      <label>Chọn:</label>
+      <input type="radio" name="style" value="background" /> Background
+      <input type="radio" name="style" value="font" /> Font <br /><br />
+
+      <label>Chọn màu:</label>
+      <select id="color">
+        <option value="">Chọn màu ...</option>
+        <option value="red">Đỏ</option>
+        <option value="violet">Tím</option>
+        <option value="blue">Xanh</option>
+        <option value="green">Xanh lá</option>
+        <option value="yellow">Vàng</option>
+      </select>
+      <br /><br />
+
+      <button onclick="doiMau()">Đổi màu</button>
+      <button onclick="resetForm()">Cancel</button>
+
+      <p id="output">
+        Hãy nhập họ và tên của bạn, sau đó tùy chỉnh màu sắc theo sở thích để
+        tạo phong cách riêng. Chỉ cần một cú nhấp chuột, bạn sẽ thấy sự thay đổi
+        ngay lập tức!
+      </p>
+    </div>
+
+    <script>
+      function doiMau() {
+        let selectedColor = document.getElementById("color").value;
+        let selectedStyle = document.querySelector(
+          'input[name="style"]:checked'
+        );
+
+        if (!selectedColor) {
+          alert("Vui lòng chọn màu!");
+          return;
+        }
+        if (!selectedStyle) {
+          alert("Vui lòng chọn kiểu (Background hoặc Font)!");
+          return;
+        }
+
+        let output = document.getElementById("output");
+
+        if (selectedStyle.value === "background") {
+          output.style.backgroundColor = selectedColor;
+        } else if (selectedStyle.value === "font") {
+          output.style.color = selectedColor;
+        }
+      }
+
+      function resetForm() {
+        document.getElementById("name").value = "";
+        document.getElementById("color").value = "";
+        document
+          .querySelectorAll('input[name="style"]')
+          .forEach((radio) => (radio.checked = false));
+
+        let output = document.getElementById("output");
+        output.style.backgroundColor = "transparent";
+        output.style.color = "black";
+      }
+    </script>
+  </body>
+</html>

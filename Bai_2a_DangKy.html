@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 2a. Đăng Ký</title>
+    <link rel="stylesheet" href="2a_dangky.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>THÔNG TIN ĐĂNG KÝ</h2>
+      <table>
+        <tr>
+          <td>Họ tên</td>
+          <td><input type="text" id="fullname" /></td>
+        </tr>
+        <tr>
+          <td>Mật khẩu</td>
+          <td><input type="password" id="password" /></td>
+        </tr>
+      </table>
+      <button onclick="register()">Đăng Ký</button>
+    </div>
+
+    <script>
+      function register() {
+        let fullname = document.getElementById("fullname").value;
+        let password = document.getElementById("password").value;
+
+        if (fullname === "" || password === "") {
+          alert("Vui lòng nhập đầy đủ họ tên và mật khẩu!");
+          return;
+        }
+
+        // Lưu vào LocalStorage
+        localStorage.setItem("username", fullname);
+        localStorage.setItem("password", password);
+
+        alert("Đăng ký thành công!");
+        window.location.href = "Bai_2a_DangNhap.html"; // Chuyển hướng sang trang đăng nhập
+      }
+    </script>
+  </body>
+</html>

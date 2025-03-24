@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 2b. Máy Tính Cơ Bản</title>
+    <link rel="stylesheet" href="2b.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>PHÉP TÍNH CƠ BẢN</h2>
+      <table>
+        <tr>
+          <td>Nhập số thứ 1</td>
+          <td>
+            <input type="text" id="num1" /> <span style="color: red">(*)</span>
+          </td>
+        </tr>
+        <tr>
+          <td>Nhập số thứ 2</td>
+          <td>
+            <input type="text" id="num2" /> <span style="color: red">(*)</span>
+          </td>
+        </tr>
+      </table>
+
+      <button onclick="calculate('+')">Cộng</button>
+      <button onclick="calculate('-')">Trừ</button>
+      <button onclick="calculate('*')">Nhân</button>
+      <button onclick="calculate('/')">Chia</button>
+      <button onclick="calculate('%')">Chia dư</button>
+
+      <p>Kết quả: <input type="text" id="result" readonly /></p>
+    </div>
+
+    <script>
+      function calculate(operator) {
+        let num1 = document.getElementById("num1").value;
+        let num2 = document.getElementById("num2").value;
+
+        // Kiểm tra nếu người dùng chưa nhập số
+        if (num1 === "" || num2 === "") {
+          alert("Vui lòng nhập đầy đủ số thứ 1 và số thứ 2!");
+          return;
+        }
+
+        // Chuyển về số (parseFloat hỗ trợ cả số thực)
+        num1 = parseFloat(num1);
+        num2 = parseFloat(num2);
+
+        // Kiểm tra nếu không phải số
+        if (isNaN(num1) || isNaN(num2)) {
+          alert("Giá trị nhập vào không hợp lệ! Vui lòng nhập số.");
+          return;
+        }
+
+        let result;
+        switch (operator) {
+          case "+":
+            result = num1 + num2;
+            break;
+          case "-":
+            result = num1 - num2;
+            break;
+          case "*":
+            result = num1 * num2;
+            break;
+          case "/":
+            if (num2 === 0) {
+              alert("Lỗi! Không thể chia cho 0.");
+              return;
+            }
+            result = num1 / num2;
+            break;
+          case "%":
+            if (num2 === 0) {
+              alert("Lỗi! Không thể chia dư cho 0.");
+              return;
+            }
+            result = num1 % num2;
+            break;
+          default:
+            alert("Phép toán không hợp lệ!");
+            return;
+        }
+
+        // Hiển thị kết quả
+        document.getElementById("result").value = result;
+      }
+    </script>
+  </body>
+</html>

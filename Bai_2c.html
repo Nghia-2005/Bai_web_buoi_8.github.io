@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 2c. Chọn Loại Cafe</title>
+    <link rel="stylesheet" href="2c.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h3>Chọn loại cafe:</h3>
+      <input type="checkbox" class="cafe" value="Trung Nguyen" /> Trung Nguyen
+      <br />
+      <input type="checkbox" class="cafe" value="Me Kong" /> Me Kong <br />
+      <input type="checkbox" class="cafe" value="New Life" /> New Life <br />
+      <input type="checkbox" class="cafe" value="Ocean Blue" /> Ocean Blue
+      <br />
+      <input type="checkbox" class="cafe" value="Blue Space" /> Blue Space
+      <br />
+      <input type="checkbox" class="cafe" value="Windows" /> Windows <br />
+
+      <button onclick="chonCafe()">Chọn</button>
+
+      <p>Bạn chọn cafe: <span id="result"></span></p>
+    </div>
+
+    <script>
+      function chonCafe() {
+        let checkboxes = document.querySelectorAll(".cafe:checked"); // Lấy tất cả checkbox đã chọn
+        let selectedCafes = [];
+
+        checkboxes.forEach((checkbox) => {
+          selectedCafes.push(checkbox.value);
+        });
+
+        // Hiển thị danh sách đã chọn
+        document.getElementById("result").innerHTML = selectedCafes.join(", ");
+      }
+    </script>
+  </body>
+</html>
